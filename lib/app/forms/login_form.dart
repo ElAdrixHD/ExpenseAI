@@ -11,12 +11,17 @@ class LoginForm extends NyFormData {
   LoginForm({String? name}) : super(name ?? "login");
 
   @override
-  fields() => [
-        Field.email("Email",
-            autofocus: true,
-            validate: FormValidator.rule("email"),
-            style: "compact"),
-        Field.password("Password",
-            validate: FormValidator.password(strength: 1), style: "compact"),
+  List<Field> fields() => [
+        Field.email(
+          "Email",
+          label: trans('login.email_placeholder'),
+          validate: FormValidator.rule("email", message: trans('errors.email')),
+        ),
+        Field.password(
+          "Password",
+          label: trans('login.password_placeholder'),
+          validate: FormValidator.password(
+              strength: 2, message: trans('errors.password')),
+        ),
       ];
 }

@@ -1,0 +1,16 @@
+{
+  "app_name": "Agente de Gastos",
+  "errors": {
+    "email": "Intrododuce un correo válido",
+    "password": "1 mayuscula, 1 número, 1 carácter especial, 8 caracteres"
+  },
+  "login": {
+    "welcome_message": "Bienvenido a tu agente de gastos",
+    "email_placeholder": "Correo electrónico",
+    "password_placeholder": "Contraseña",
+    "login_button_text": "Iniciar sesión",
+    "sign_up_text": "¿No tienes una cuenta? ",
+    "sign_up_button_text": "Regístrate",
+    "forgot_password_text": "¿Has olvidado tu contraseña?"
+  }
+}

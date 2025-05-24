@@ -7,54 +7,56 @@ class FormStyle extends NyFormStyle {
   FormStyleTextField textField(BuildContext context, Field field) {
     return {
       'minimal': (NyTextField textField) => textField.copyWith(
-              decorator: DecoratorTextField(
-            decoration: (dynamic data, InputDecoration inputDecoration) =>
-                inputDecoration.copyWith(
-              filled: true,
-              fillColor: Colors.grey.shade100,
-              isDense: true,
-              hintText: field.name,
-              focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
-                  borderSide: BorderSide(color: Colors.red, width: 2)),
-              enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
-                  borderSide: BorderSide(color: Colors.transparent)),
-              contentPadding:
-                  EdgeInsetsDirectional.symmetric(vertical: 13, horizontal: 13),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(
-                  width: 0,
-                  style: BorderStyle.none,
+            decorator: DecoratorTextField(
+              decoration: (dynamic data, InputDecoration inputDecoration) =>
+                  inputDecoration.copyWith(
+                filled: true,
+                fillColor: Colors.grey.shade100,
+                isDense: true,
+                hintText: field.name,
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    borderSide: BorderSide(color: Colors.red, width: 2)),
+                enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    borderSide: BorderSide(color: Colors.transparent)),
+                contentPadding: EdgeInsetsDirectional.symmetric(
+                    vertical: 13, horizontal: 13),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
+                    width: 0,
+                    style: BorderStyle.none,
+                  ),
                 ),
               ),
-            ),
-            successDecoration:
-                (dynamic data, InputDecoration inputDecoration) =>
-                    inputDecoration.copyWith(
-              prefixIcon: Icon(Icons.person),
-              focusedBorder: OutlineInputBorder(
+              successDecoration:
+                  (dynamic data, InputDecoration inputDecoration) =>
+                      inputDecoration.copyWith(
+                prefixIcon: Icon(Icons.person),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    borderSide: BorderSide(color: Colors.green, width: 2)),
+                enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
-                  borderSide: BorderSide(color: Colors.green, width: 2)),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-                borderSide: BorderSide(color: Colors.green, width: 2),
+                  borderSide: BorderSide(color: Colors.green, width: 2),
+                ),
               ),
+              errorDecoration: (dynamic data,
+                      InputDecoration inputDecoration) =>
+                  inputDecoration.copyWith(
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                        borderSide: BorderSide(color: Colors.orange, width: 2),
+                      ),
+                      errorStyle: TextStyle(color: Colors.red),
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                        borderSide: BorderSide(color: Colors.orange, width: 2),
+                      ),
+                      border: InputBorder.none),
             ),
-            errorDecoration: (dynamic data, InputDecoration inputDecoration) =>
-                inputDecoration.copyWith(
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
-                      borderSide: BorderSide(color: Colors.orange, width: 2),
-                    ),
-                    errorStyle: TextStyle(color: Colors.red),
-                    errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
-                      borderSide: BorderSide(color: Colors.orange, width: 2),
-                    ),
-                    border: InputBorder.none),
-          )),
+          ),
       'default': (NyTextField textField) => textField.copyWith(
               decorator: DecoratorTextField(
             decoration: (dynamic data, InputDecoration inputDecoration) =>

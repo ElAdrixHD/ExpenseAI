@@ -1,6 +1,16 @@
 {
-  "documentation": "documentation",
-  "changelog": "changelog",
-  "micro-framework for Flutter": "micro-framework for Flutter",
-  "hello": "hello {{name}}"
+  "app_name": "Expense Agent",
+  "errors": {
+    "email": "Enter a valid email",
+    "password": "1 uppercased letter, 1 digit, 1 special character, 8 characters"
+  },
+  "login": {
+    "welcome_message": "Welcome to your Expense Agent",
+    "email_placeholder": "Email",
+    "password_placeholder": "Password",
+    "login_button_text": "Login",
+    "sign_up_text": "Don't have an account? ",
+    "sign_up_button_text": "Sign Up",
+    "forgot_password_text": "Forgot Password?"
+  }
 }
