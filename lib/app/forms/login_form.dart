@@ -13,12 +13,12 @@ class LoginForm extends NyFormData {
   @override
   List<Field> fields() => [
         Field.email(
-          "Email",
+          "login.email",
           label: trans('login.email_placeholder'),
           validate: FormValidator.rule("email", message: trans('errors.email')),
         ),
         Field.password(
-          "Password",
+          "login.password",
           label: trans('login.password_placeholder'),
           validate: FormValidator.password(
               strength: 2, message: trans('errors.password')),

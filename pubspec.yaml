@@ -30,6 +30,10 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  integration_test:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
 
 dev_dependencies:
   rename: ^3.0.2

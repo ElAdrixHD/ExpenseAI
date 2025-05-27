@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:nylo_framework/nylo_framework.dart';
+
 import '/config/design.dart';
 import '/resources/themes/styles/color_styles.dart';
 import '/resources/themes/text_theme/default_text_theme.dart';
-import 'package:nylo_framework/nylo_framework.dart';
 
 /* Light Theme
 |--------------------------------------------------------------------------
@@ -16,12 +17,12 @@ ThemeData lightTheme(ColorStyles color) {
 
   return ThemeData(
     useMaterial3: true,
-    primaryColor: color.content,
-    primaryColorLight: color.primaryAccent,
+    primaryColor: color.primaryAccent,
+    primaryColorLight: const Color(0xFF9AC8DE),
     focusColor: color.content,
     scaffoldBackgroundColor: color.background,
     hintColor: color.primaryAccent,
-    dividerTheme: DividerThemeData(color: Colors.grey[100]),
+    dividerTheme: DividerThemeData(color: const Color(0xFFE0E0E0)),
     appBarTheme: AppBarTheme(
       surfaceTintColor: Colors.transparent,
       backgroundColor: color.appBarBackground,
@@ -36,7 +37,7 @@ ThemeData lightTheme(ColorStyles color) {
       colorScheme: ColorScheme.light(primary: color.buttonBackground),
     ),
     textButtonTheme: TextButtonThemeData(
-      style: TextButton.styleFrom(foregroundColor: color.content),
+      style: TextButton.styleFrom(foregroundColor: color.primaryAccent),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: TextButton.styleFrom(
