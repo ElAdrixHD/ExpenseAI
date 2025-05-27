@@ -1,4 +1,4 @@
-package com.nylo.android
+package es.adrianmmudarra.expense_agent
 
 import android.content.ContentResolver
 import android.content.Context

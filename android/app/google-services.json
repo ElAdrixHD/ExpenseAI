@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "634440153808",
+    "project_id": "expensai-fefa3",
+    "storage_bucket": "expensai-fefa3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634440153808:android:4038fe41b27da5a9a9fcd5",
+        "android_client_info": {
+          "package_name": "com.nylo.android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXjJVaKxC6SfX0UK7LKN0_UrGAMTG_TTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634440153808:android:ed55790700680f31a9fcd5",
+        "android_client_info": {
+          "package_name": "es.adrianmmudarra.expense_agent"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXjJVaKxC6SfX0UK7LKN0_UrGAMTG_TTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

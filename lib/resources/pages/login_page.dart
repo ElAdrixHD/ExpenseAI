@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/app/forms/login_form.dart';
-import 'package:flutter_app/bootstrap/extensions.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
+import '/app/forms/login_form.dart';
+import '/bootstrap/extensions.dart';
 import '../../config/design.dart';
 import '../widgets/buttons/buttons.dart';
 
