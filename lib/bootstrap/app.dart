@@ -31,28 +31,36 @@ class Main extends StatelessWidget {
           child: ThemeConsumer(
             child: ValueListenableBuilder(
               valueListenable: ValueNotifier(NyLocalization.instance.locale),
-              builder: (context, Locale locale, _) => MaterialApp(
-                navigatorKey: navigatorKey,
-                themeMode: themeMode,
-                navigatorObservers: navigatorObservers,
-                debugShowMaterialGrid: false,
-                showPerformanceOverlay: false,
-                checkerboardRasterCacheImages: false,
-                checkerboardOffscreenLayers: false,
-                showSemanticsDebugger: false,
-                debugShowCheckedModeBanner: false,
-                darkTheme: appThemes.darkTheme,
-                initialRoute: initialRoute,
-                onGenerateRoute: onGenerateRoute,
-                onUnknownRoute: onUnknownRoute,
-                theme: ThemeProvider.themeOf(context).data,
-                localeResolutionCallback:
-                    (Locale? locale, Iterable<Locale> supportedLocales) {
-                  return locale;
+              builder: (context, Locale locale, _) => GestureDetector(
+                onTap: () {
+                  FocusScope.of(context).unfocus();
                 },
-                localizationsDelegates: NyLocalization.instance.delegates,
-                locale: locale,
-                supportedLocales: [Locale('en', 'US')],
+                child: MaterialApp(
+                  navigatorKey: navigatorKey,
+                  themeMode: themeMode,
+                  navigatorObservers: navigatorObservers,
+                  debugShowMaterialGrid: false,
+                  showPerformanceOverlay: false,
+                  checkerboardRasterCacheImages: false,
+                  checkerboardOffscreenLayers: false,
+                  showSemanticsDebugger: false,
+                  debugShowCheckedModeBanner: false,
+                  darkTheme: appThemes.darkTheme,
+                  initialRoute: initialRoute,
+                  onGenerateRoute: onGenerateRoute,
+                  onUnknownRoute: onUnknownRoute,
+                  theme: ThemeProvider.themeOf(context).data,
+                  localeResolutionCallback:
+                      (Locale? locale, Iterable<Locale> supportedLocales) {
+                    return locale;
+                  },
+                  localizationsDelegates: NyLocalization.instance.delegates,
+                  locale: locale,
+                  supportedLocales: [
+                    Locale('en'),
+                    Locale('es'),
+                  ],
+                ),
               ),
             ),
           ),

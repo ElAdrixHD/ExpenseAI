@@ -1,10 +1,22 @@
 {
   "app_name": "Expense Agent",
   "errors": {
-    "email": "Enter a valid email",
-    "password": "1 uppercased letter, 1 digit, 1 special character, 8 characters"
+    "email_form": "Enter a valid email",
+    "password_form": "Enter a valid password",
+    "firebase_auth": {
+      "not_found": "No user found with this email address.",
+      "wrong_password": "Incorrect password provided.",
+      "email_already_in_use": "An account already exists with this email address.",
+      "weak_password": "The password provided is too weak.",
+      "invalid_email": "The email address is invalid.",
+      "user_disabled": "This user account has been disabled.",
+      "too_many_requests": "Too many attempts. Please try again later.",
+      "operation_not_allowed": "This operation is not allowed.",
+      "invalid-credential": "Incorrect username or password.",
+      "default": "An authentication error occurred. Please try again."
+    }
   },
-  "login": {
+  "login_page": {
     "welcome_message": "Welcome to your Expense Agent",
     "email_placeholder": "Email",
     "password_placeholder": "Password",

@@ -14,14 +14,14 @@ class LoginForm extends NyFormData {
   List<Field> fields() => [
         Field.email(
           "login.email",
-          label: trans('login.email_placeholder'),
-          validate: FormValidator.rule("email", message: trans('errors.email')),
+          label: trans('login_page.email_placeholder'),
+          validate:
+              FormValidator.rule("email", message: trans('errors.email_form')),
         ),
         Field.password(
           "login.password",
-          label: trans('login.password_placeholder'),
-          validate: FormValidator.password(
-              strength: 2, message: trans('errors.password')),
+          label: trans('login_page.password_placeholder'),
+          validate: FormValidator.notEmpty(message: 'errors.password_form'),
         ),
       ];
 }
