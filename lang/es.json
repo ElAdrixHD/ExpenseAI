@@ -1,16 +1,35 @@
 {
   "app_name": "Agente de Gastos",
   "errors": {
-    "email": "Intrododuce un correo válido",
-    "password": "1 mayuscula, 1 número, 1 carácter especial, 8 caracteres"
+    "toast_title": "¡Algo salió mal!",
+    "email_form": "Introduce un correo válido",
+    "password_form": "Introduce una contraseña válida",
+    "firebase_auth": {
+      "not_found": "No se encontró ningún usuario con esta dirección de correo electrónico.",
+      "wrong_password": "Contraseña incorrecta proporcionada.",
+      "email_already_in_use": "Ya existe una cuenta con esta dirección de correo electrónico.",
+      "weak_password": "La contraseña proporcionada es demasiado débil.",
+      "invalid_email": "La dirección de correo electrónico es inválida.",
+      "user_disabled": "Esta cuenta de usuario ha sido deshabilitada.",
+      "too_many_requests": "Demasiados intentos. Por favor, inténtalo de nuevo más tarde.",
+      "operation_not_allowed": "Esta operación no está permitida.",
+      "invalid-credential": "Nombre de usuario o contraseña incorrectos.",
+      "default": "Ocurrió un error de autenticación. Por favor, inténtalo de nuevo."
+    }
   },
-  "login": {
-    "welcome_message": "Bienvenido a tu agente de gastos",
+  "login_page": {
+    "welcome_message": "Bienvenido a tu Agente de Gastos",
     "email_placeholder": "Correo electrónico",
     "password_placeholder": "Contraseña",
     "login_button_text": "Iniciar sesión",
     "sign_up_text": "¿No tienes una cuenta? ",
     "sign_up_button_text": "Regístrate",
-    "forgot_password_text": "¿Has olvidado tu contraseña?"
+    "forgot_password_text": "¿Has olvidado tu contraseña?",
+    "toast_warning_title": "Correo electrónico requerido",
+    "toast_warning_description": "Por favor, introduce tu correo electrónico primero.",
+    "invalid_form": "Por favor, completa todos los campos.",
+    "email_required": "El correo electrónico es requerido.",
+    "toast_success_forgot_password_title": "Restablecimiento de Contraseña",
+    "toast_success_forgot_password_description": "Correo de restablecimiento de contraseña enviado. Revisa tu bandeja de entrada."
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import '/resources/widgets/splash_screen.dart';
 import '/bootstrap/app.dart';
 import '/config/providers.dart';
@@ -38,6 +40,12 @@ class Boot {
 |-------------------------------------------------------------------------- */
 
 _setup() async {
+  /// Initialize Firebase
+  await Firebase.initializeApp();
+  
+  /// Initialize Firebase Analytics
+  FirebaseAnalytics.instance;
+  
   /// Example: Initializing StorageConfig
   // StorageConfig.init(
   //   androidOptions: AndroidOptions(

@@ -1,4 +1,3 @@
-import 'package:expense_agent/app/providers/firebase_provider.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
 import '/app/providers/app_provider.dart';
@@ -16,7 +15,6 @@ import '/app/providers/route_provider.dart';
 
 final Map<Type, NyProvider> providers = {
   AppProvider: AppProvider(),
-  FirebaseProvider: FirebaseProvider(),
   RouteProvider: RouteProvider(),
   EventProvider: EventProvider(),
   PushNotificationsProvider: PushNotificationsProvider(),

@@ -2,6 +2,7 @@ import 'package:nylo_framework/nylo_framework.dart';
 
 import '/app/events/login_event.dart';
 import '/app/networking/firebase_service.dart';
+import '/app/networking/analytics_service.dart';
 import 'controller.dart';
 
 class LoginController extends Controller {
@@ -13,7 +14,25 @@ class LoginController extends Controller {
       throw Exception(trans('login_page.invalid_form'));
     }
     
-    await event<LoginEvent>(data: {'email': email, 'password': password});
+    try {
+      await event<LoginEvent>(data: {'email': email, 'password': password});
+      
+      // Track successful login
+      await AnalyticsService.trackLogin(method: 'email');
+      await AnalyticsService.setUserId(email);
+      await AnalyticsService.setUserProperty(name: 'login_method', value: 'email');
+    } catch (e) {
+      // Track failed login attempt
+      await AnalyticsService.trackEvent(
+        name: 'login_failed',
+        parameters: {
+          'method': 'email',
+          'error': e.toString(),
+          'timestamp': DateTime.now().millisecondsSinceEpoch,
+        },
+      );
+      rethrow;
+    }
   }
 
   Future<void> handleForgotPassword(String? email) async {

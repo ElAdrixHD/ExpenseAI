@@ -3,6 +3,7 @@ import 'package:nylo_framework/nylo_framework.dart';
 
 import '/app/controllers/login_controller.dart';
 import '/app/forms/login_form.dart';
+import '/app/networking/analytics_service.dart';
 import '/bootstrap/extensions.dart';
 import '/config/design.dart';
 import '/resources/widgets/buttons/buttons.dart';
@@ -16,7 +17,10 @@ class LoginPage extends NyStatefulWidget<LoginController> {
 class _LoginPageState extends NyPage<LoginPage> {
   final form = LoginForm();
   @override
-  get init => () {};
+  get init => () {
+    // Track login page view
+    AnalyticsService.trackScreenView(screenName: 'login_page');
+  };
 
   @override
   Widget view(BuildContext context) {
@@ -94,6 +98,15 @@ class _LoginPageState extends NyPage<LoginPage> {
                       SizedBox(height: 16),
                       InkWell(
                         onTap: () async {
+                          // Track forgot password interaction
+                          await AnalyticsService.trackEvent(
+                            name: 'forgot_password_clicked',
+                            parameters: {
+                              'screen': 'login_page',
+                              'timestamp': DateTime.now().millisecondsSinceEpoch,
+                            },
+                          );
+                          
                           try {
                             String? email = form.data(key: 'login.email');
                             await widget.controller.handleForgotPassword(email);
