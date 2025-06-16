@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:nylo_framework/nylo_framework.dart';
+
 import '/config/design.dart';
 import '/resources/themes/styles/color_styles.dart';
 import '/resources/themes/text_theme/default_text_theme.dart';
-import 'package:nylo_framework/nylo_framework.dart';
 
 /* Dark Theme
 |--------------------------------------------------------------------------
@@ -23,9 +24,9 @@ ThemeData darkTheme(ColorStyles color) {
     datePickerTheme: DatePickerThemeData(
       headerForegroundColor: Colors.white,
       weekdayStyle: TextStyle(color: Colors.white),
-      dayForegroundColor: MaterialStateProperty.resolveWith<Color?>(
-          (Set<MaterialState> states) {
-        if (states.contains(MaterialState.selected)) {
+      dayForegroundColor:
+          WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+        if (states.contains(WidgetState.selected)) {
           return Colors.black; // Color for selected date
         }
         return Colors.white; // Color for unselected dates

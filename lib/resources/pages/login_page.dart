@@ -4,8 +4,8 @@ import 'package:nylo_framework/nylo_framework.dart';
 import '/app/controllers/login_controller.dart';
 import '/app/forms/login_form.dart';
 import '/bootstrap/extensions.dart';
-import '../../config/design.dart';
-import '../widgets/buttons/buttons.dart';
+import '/config/design.dart';
+import '/resources/widgets/buttons/buttons.dart';
 
 class LoginPage extends NyStatefulWidget<LoginController> {
   static RouteView path = ("/login", (_) => LoginPage());
@@ -52,21 +52,24 @@ class _LoginPageState extends NyPage<LoginPage> {
                     children: [
                       Button.primary(
                         text: trans("login_page.login_button_text"),
-                        showToastError: true,
                         width: double.infinity,
                         submitForm: (
                           form,
                           (data) async {
-                            await widget.controller.handleLogin(data);
+                            try {
+                              await widget.controller.handleLogin(data);
+                            } catch (e) {
+                              showToastDanger(
+                                title: trans('errors.toast_title'),
+                                description: e.toString(),
+                              );
+                            }
                           }
                         ),
                       ),
                       SizedBox(height: 16),
                       InkWell(
-                        onTap: () async {
-                          await changeLanguage('en');
-                          setState(() {});
-                        },
+                        onTap: () async {},
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
@@ -91,13 +94,20 @@ class _LoginPageState extends NyPage<LoginPage> {
                       SizedBox(height: 16),
                       InkWell(
                         onTap: () async {
-                          String? email = form.data(key: 'login.email');
-                          if (email != null && email.isNotEmpty) {
+                          try {
+                            String? email = form.data(key: 'login.email');
                             await widget.controller.handleForgotPassword(email);
-                          } else {
+                            showToastSuccess(
+                              title: trans(
+                                  'login_page.toast_success_forgot_password_title'),
+                              description: trans(
+                                  'login_page.toast_success_forgot_password_description'),
+                            );
+                          } catch (e) {
                             showToastWarning(
-                              title: "Email Required",
-                              description: "Please enter your email first",
+                              title: trans('login_page.toast_warning_title'),
+                              description:
+                                  trans('login_page.toast_warning_description'),
                             );
                           }
                         },

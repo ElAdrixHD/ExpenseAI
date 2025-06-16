@@ -1,34 +1,36 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:nylo_framework/nylo_framework.dart';
 
+import '/app/models/user.dart';
+
 class FirebaseAuthService {
-  static final FirebaseAuth _auth = FirebaseAuth.instance;
+  static final auth.FirebaseAuth _auth = auth.FirebaseAuth.instance;
 
-  /// Get current user
-  static User? get currentUser => _auth.currentUser;
+  static User? get currentUser => User(
+        id: _auth.currentUser?.uid,
+        name: _auth.currentUser?.displayName,
+        email: _auth.currentUser?.email,
+      );
 
-  /// Check if user is authenticated
   static bool get isAuthenticated => _auth.currentUser != null;
 
-  /// Sign in with email and password
-  static Future<UserCredential?> signInWithEmailAndPassword({
+  static Future<User?> signInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
     try {
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+      auth.UserCredential userCredential =
+          await _auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
 
-      await Auth.authenticate(data: {
-        'uid': userCredential.user?.uid,
-        'email': userCredential.user?.email,
-        'displayName': userCredential.user?.displayName,
-      });
-
-      return userCredential;
-    } on FirebaseAuthException catch (e) {
+      return User(
+        id: userCredential.user?.uid,
+        name: userCredential.user?.displayName,
+        email: userCredential.user?.email,
+      );
+    } on auth.FirebaseAuthException catch (e) {
       String errorMessage = _getErrorMessage(e.code);
       throw Exception(errorMessage);
     } catch (e) {
@@ -36,26 +38,23 @@ class FirebaseAuthService {
     }
   }
 
-  /// Create user with email and password
-  static Future<UserCredential?> createUserWithEmailAndPassword({
+  static Future<User?> createUserWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
     try {
-      UserCredential userCredential =
+      auth.UserCredential userCredential =
           await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
-      await Auth.authenticate(data: {
-        'uid': userCredential.user?.uid,
-        'email': userCredential.user?.email,
-        'displayName': userCredential.user?.displayName,
-      });
-
-      return userCredential;
-    } on FirebaseAuthException catch (e) {
+      return User(
+        id: userCredential.user?.uid,
+        email: userCredential.user?.email,
+        name: userCredential.user?.displayName,
+      );
+    } on auth.FirebaseAuthException catch (e) {
       String errorMessage = _getErrorMessage(e.code);
       throw Exception(errorMessage);
     } catch (e) {
@@ -63,7 +62,6 @@ class FirebaseAuthService {
     }
   }
 
-  /// Sign out
   static Future<void> signOut() async {
     try {
       await _auth.signOut();
@@ -73,11 +71,10 @@ class FirebaseAuthService {
     }
   }
 
-  /// Reset password
   static Future<void> resetPassword({required String email}) async {
     try {
       await _auth.sendPasswordResetEmail(email: email);
-    } on FirebaseAuthException catch (e) {
+    } on auth.FirebaseAuthException catch (e) {
       String errorMessage = _getErrorMessage(e.code);
       throw Exception(errorMessage);
     } catch (e) {
@@ -85,7 +82,6 @@ class FirebaseAuthService {
     }
   }
 
-  /// Get user friendly error messages
   static String _getErrorMessage(String errorCode) {
     switch (errorCode) {
       case 'user-not-found':

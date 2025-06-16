@@ -1,12 +1,3 @@
 [
-  {
-    "name": "quote",
-    "category": "motivational",
-    "script": "motivational_quote.dart"
-  },
-  {
-    "name": "current_time",
-    "category": "app",
-    "script": "current_time.dart"
-  }
+
 ]

@@ -1,5 +1,7 @@
 import 'package:nylo_framework/nylo_framework.dart';
 
+import '../networking/firebase_service.dart';
+
 class LogoutEvent implements NyEvent {
   @override
   final listeners = {
@@ -10,7 +12,10 @@ class LogoutEvent implements NyEvent {
 class DefaultListener extends NyListener {
   @override
   handle(dynamic event) async {
-    await Auth.logout();
+    await Future.wait([
+      FirebaseAuthService.signOut(),
+      Auth.logout(),
+    ]);
 
     routeToInitial();
   }

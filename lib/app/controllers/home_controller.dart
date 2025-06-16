@@ -1,5 +1,5 @@
+import 'package:expense_agent/app/events/logout_event.dart';
 import 'package:expense_agent/app/networking/firebase_service.dart';
-import 'package:expense_agent/resources/pages/login_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -28,6 +28,6 @@ class HomeController extends Controller {
 
   signOut() async {
     await FirebaseAuthService.signOut();
-    routeTo(LoginPage.path, navigationType: NavigationType.pushAndForgetAll);
+    event<LogoutEvent>();
   }
 }

@@ -1,6 +1,7 @@
 {
   "app_name": "Expense Agent",
   "errors": {
+    "toast_title": "Something when wrong!",
     "email_form": "Enter a valid email",
     "password_form": "Enter a valid password",
     "firebase_auth": {
@@ -23,6 +24,12 @@
     "login_button_text": "Login",
     "sign_up_text": "Don't have an account? ",
     "sign_up_button_text": "Sign Up",
-    "forgot_password_text": "Forgot Password?"
+    "forgot_password_text": "Forgot Password?",
+    "toast_warning_title": "Email required",
+    "toast_warning_description": "Please enter your email first.",
+    "invalid_form": "Please fill in all fields.",
+    "email_required": "Email is required.",
+    "toast_success_forgot_password_title": "Password Reset",
+    "toast_success_forgot_password_description": "Password reset email sent. Check your inbox."
   }
 }

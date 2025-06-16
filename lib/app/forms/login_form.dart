@@ -21,7 +21,8 @@ class LoginForm extends NyFormData {
         Field.password(
           "login.password",
           label: trans('login_page.password_placeholder'),
-          validate: FormValidator.notEmpty(message: 'errors.password_form'),
+          validate:
+              FormValidator.notEmpty(message: trans('errors.password_form')),
         ),
       ];
 }
