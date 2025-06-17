@@ -1,12 +1,13 @@
-import '/config/keys.dart';
+import 'package:nylo_framework/nylo_framework.dart';
+
 import '/app/forms/style/form_style.dart';
-import '/config/form_casts.dart';
 import '/config/decoders.dart';
 import '/config/design.dart';
+import '/config/form_casts.dart';
+import '/config/keys.dart';
+import '/config/localization.dart';
 import '/config/theme.dart';
 import '/config/validation_rules.dart';
-import '/config/localization.dart';
-import 'package:nylo_framework/nylo_framework.dart';
 
 class AppProvider implements NyProvider {
   @override
