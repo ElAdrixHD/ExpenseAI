@@ -1,9 +1,14 @@
 {
   "app_name": "Expense Agent",
   "errors": {
-    "toast_title": "Something when wrong!",
+    "toast_title": "Something went wrong!",
     "email_form": "Enter a valid email",
     "password_form": "Enter a valid password",
+    "password_required": "Password is required",
+    "confirm_password_form": "Please confirm your password",
+    "password_min_length": "Password must be at least 8 characters",
+    "password_weak": "Password must contain uppercase, lowercase and number",
+    "passwords_do_not_match": "Passwords do not match",
     "firebase_auth": {
       "not_found": "No user found with this email address.",
       "wrong_password": "Incorrect password provided.",
@@ -31,5 +36,14 @@
     "email_required": "Email is required.",
     "toast_success_forgot_password_title": "Password Reset",
     "toast_success_forgot_password_description": "Password reset email sent. Check your inbox."
+  },
+  "register_page": {
+    "welcome_message": "Create your Account",
+    "email_placeholder": "Email",
+    "password_placeholder": "Password",
+    "confirm_password_placeholder": "Confirm Password",
+    "register_button_text": "Create Account",
+    "login_text": "Already have an account? ",
+    "login_button_text": "Sign In"
   }
 }

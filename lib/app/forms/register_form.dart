@@ -11,13 +11,32 @@ class RegisterForm extends NyFormData {
   RegisterForm({String? name}) : super(name ?? "register");
 
   @override
-  fields() => [
-        Field.text("Name",
-            autofocus: true,
-            validate: FormValidator.notEmpty(),
-            style: "compact"),
-        Field.email("Email", validate: FormValidator.email(), style: "compact"),
-        Field.password("Password",
-            validate: FormValidator.password(strength: 1), style: "compact"),
+  List<Field> fields() => [
+        Field.email(
+          "register.email",
+          label: trans('register_page.email_placeholder'),
+          validate: FormValidator.email(message: trans('errors.email_form')),
+        ),
+        Field.password(
+          "register.password",
+          viewable: true,
+          label: trans('register_page.password_placeholder'),
+          validate: FormValidator.notEmpty(
+            message: trans('errors.password_required'),
+          ),
+        ),
+        Field.password(
+          "register.confirm_password",
+          viewable: true,
+          label: trans('register_page.confirm_password_placeholder'),
+          validate: FormValidator.custom(
+            (value) {
+              Map formData = data();
+              dynamic password = formData['register.password'] ?? "";
+              return password == value;
+            },
+            message: trans('errors.passwords_do_not_match'),
+          ),
+        ),
       ];
 }

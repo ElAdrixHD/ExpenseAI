@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:nylo_framework/nylo_framework.dart';
+
 import '/bootstrap/helpers.dart';
 import '/resources/themes/styles/color_styles.dart';
-import 'package:nylo_framework/nylo_framework.dart';
 
 /// [Text] Extensions
 extension NyText on Text {
@@ -26,5 +27,11 @@ extension NyTextStyle on TextStyle {
       BuildContext context, Color Function(ColorStyles color) newColor,
       {String? themeId}) {
     return copyWith(color: newColor(ThemeColor.get(context, themeId: themeId)));
+  }
+}
+
+extension MyException on Exception {
+  String get message {
+    return toString().replaceFirst('Exception: ', '');
   }
 }

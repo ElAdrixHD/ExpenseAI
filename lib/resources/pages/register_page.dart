@@ -1,25 +1,25 @@
-import 'package:expense_agent/resources/pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
-import '/app/controllers/login_controller.dart';
-import '/app/forms/login_form.dart';
+import '/app/controllers/register_controller.dart';
+import '/app/forms/register_form.dart';
 import '/app/networking/analytics_service.dart';
 import '/bootstrap/extensions.dart';
 import '/config/design.dart';
 import '/resources/widgets/buttons/buttons.dart';
 
-class LoginPage extends NyStatefulWidget<LoginController> {
-  static RouteView path = ("/login", (_) => LoginPage());
+class RegisterPage extends NyStatefulWidget<RegisterController> {
+  static RouteView path = ("/register", (_) => RegisterPage());
 
-  LoginPage({super.key}) : super(child: () => _LoginPageState());
+  RegisterPage({super.key}) : super(child: () => _RegisterPageState());
 }
 
-class _LoginPageState extends NyPage<LoginPage> {
-  final form = LoginForm();
+class _RegisterPageState extends NyPage<RegisterPage> {
+  final form = RegisterForm();
+
   @override
   get init => () {
-        AnalyticsService.trackScreenView(screenName: 'login_page');
+        AnalyticsService.trackScreenView(screenName: 'register_page');
       };
 
   @override
@@ -35,7 +35,7 @@ class _LoginPageState extends NyPage<LoginPage> {
                 SizedBox(height: 100, width: 100, child: logo),
                 SizedBox(height: 30),
                 Text(
-                  trans('login_page.welcome_message'),
+                  trans('register_page.welcome_message'),
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -55,13 +55,13 @@ class _LoginPageState extends NyPage<LoginPage> {
                   footer: Column(
                     children: [
                       Button.primary(
-                        text: trans("login_page.login_button_text"),
+                        text: trans("register_page.register_button_text"),
                         width: double.infinity,
                         submitForm: (
                           form,
                           (data) async {
                             try {
-                              await widget.controller.handleLogin(data);
+                              await widget.controller.handleRegister(data);
                             } on Exception catch (e) {
                               showToastDanger(
                                 title: trans('errors.toast_title'),
@@ -74,64 +74,27 @@ class _LoginPageState extends NyPage<LoginPage> {
                       SizedBox(height: 16),
                       InkWell(
                         onTap: () async {
-                          routeTo(RegisterPage.path);
+                          pop();
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              trans('login_page.sign_up_text'),
+                              trans('register_page.login_text'),
                               style: TextStyle(
                                 color: context.color.content
                                     .withValues(alpha: 0.7),
                               ),
                             ),
                             Text(
-                              trans('login_page.sign_up_button_text'),
+                              trans('register_page.login_button_text'),
                               style: TextStyle(
                                 color: context.color.primaryAccent,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
-                        ),
-                      ),
-                      SizedBox(height: 16),
-                      InkWell(
-                        onTap: () async {
-                          // Track forgot password interaction
-                          await AnalyticsService.trackEvent(
-                            name: 'forgot_password_clicked',
-                            parameters: {
-                              'screen': 'login_page',
-                              'timestamp':
-                                  DateTime.now().millisecondsSinceEpoch,
-                            },
-                          );
-
-                          try {
-                            String? email = form.data(key: 'login.email');
-                            await widget.controller.handleForgotPassword(email);
-                            showToastSuccess(
-                              title: trans(
-                                  'login_page.toast_success_forgot_password_title'),
-                              description: trans(
-                                  'login_page.toast_success_forgot_password_description'),
-                            );
-                          } catch (e) {
-                            showToastWarning(
-                              title: trans('login_page.toast_warning_title'),
-                              description:
-                                  trans('login_page.toast_warning_description'),
-                            );
-                          }
-                        },
-                        child: Text(
-                          trans('login_page.forgot_password_text'),
-                          style: TextStyle(
-                            color: context.color.primaryAccent,
-                          ),
                         ),
                       ),
                     ],

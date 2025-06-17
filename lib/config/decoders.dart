@@ -1,6 +1,7 @@
 import 'package:expense_agent/app/controllers/login_controller.dart';
 
 import '/app/controllers/home_controller.dart';
+import '/app/controllers/register_controller.dart';
 import '/app/models/user.dart';
 import '/app/networking/api_service.dart';
 
@@ -46,4 +47,5 @@ final Map<Type, dynamic> apiDecoders = {
 final Map<Type, dynamic> controllers = {
   HomeController: () => HomeController(),
   LoginController: () => LoginController(),
+  RegisterController: () => RegisterController(),
 };

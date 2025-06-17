@@ -1,3 +1,4 @@
+import '/resources/pages/register_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
 import '/resources/pages/home_page.dart';
@@ -23,6 +24,7 @@ import '/resources/pages/not_found_page.dart';
 
 appRouter() => nyRoutes((router) {
       router.add(LoginPage.path).initialRoute();
+      router.add(RegisterPage.path);
       router.add(HomePage.path).authenticatedRoute();
       // Add your routes here ...
       // router.add(NewPage.path, transitionType: TransitionType.fade());
@@ -35,4 +37,4 @@ appRouter() => nyRoutes((router) {
       //
       // });
       router.add(NotFoundPage.path).unknownRoute();
-    });
+});
