@@ -22,7 +22,25 @@ ThemeData lightTheme(ColorStyles color) {
     focusColor: color.content,
     scaffoldBackgroundColor: color.background,
     hintColor: color.primaryAccent,
-    dividerTheme: DividerThemeData(color: const Color(0xFFE0E0E0)),
+    dividerTheme: DividerThemeData(color: const Color(0xFFE2E8F0)),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: color.surfaceBackground,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12.0),
+        borderSide: BorderSide(color: const Color(0xFFE2E8F0)),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12.0),
+        borderSide: BorderSide(color: const Color(0xFFE2E8F0)),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12.0),
+        borderSide: BorderSide(color: color.primaryAccent, width: 2.0),
+      ),
+      contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+      hintStyle: TextStyle(color: const Color(0xFF94A3B8)),
+    ),
     appBarTheme: AppBarTheme(
       surfaceTintColor: Colors.transparent,
       backgroundColor: color.appBarBackground,
