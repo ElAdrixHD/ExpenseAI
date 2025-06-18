@@ -14,12 +14,14 @@ class RegisterForm extends NyFormData {
   List<Field> fields() => [
         Field.email(
           "register.email",
+          style: 'default',
           label: trans('register_page.email_placeholder'),
           validate: FormValidator.email(message: trans('errors.email_form')),
         ),
         Field.password(
           "register.password",
           viewable: true,
+          style: 'default',
           label: trans('register_page.password_placeholder'),
           validate: FormValidator.notEmpty(
             message: trans('errors.password_required'),
@@ -28,6 +30,7 @@ class RegisterForm extends NyFormData {
         Field.password(
           "register.confirm_password",
           viewable: true,
+          style: 'default',
           label: trans('register_page.confirm_password_placeholder'),
           validate: FormValidator.custom(
             (value) {

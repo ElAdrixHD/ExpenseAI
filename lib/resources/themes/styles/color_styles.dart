@@ -55,11 +55,13 @@ abstract class ColorStyles extends BaseColorStyles {
   // toast notification
   Color get toastNotificationBackground;
 
-  // e.g. add a new style
-  // Uncomment the below:
-  // Color get iconBackground;
-
-  // Then implement in color in:
-  // /resources/themes/styles/light_theme_colors
-  // /resources/themes/styles/dark_theme_colors
+  // form fields
+  Color get formFieldBackground;
+  Color get formFieldBorder;
+  Color get formFieldFocusedBorder;
+  Color get formFieldHintText;
+  Color get formFieldLabelText;
+  Color get formFieldSuffixIcon;
+  Color get formFieldSuccessBorder;
+  Color get formFieldErrorBorder;
 }

@@ -56,4 +56,22 @@ class DarkThemeColors implements ColorStyles {
   // toast notification
   @override
   Color get toastNotificationBackground => const Color(0xFF2A2833);
+
+  // form fields
+  @override
+  Color get formFieldBackground => const Color(0xFF2A2833);
+  @override
+  Color get formFieldBorder => const Color(0xFF4B5563);
+  @override
+  Color get formFieldFocusedBorder => const Color(0xFF9AC8DE);
+  @override
+  Color get formFieldHintText => const Color(0xFF9CA3AF);
+  @override
+  Color get formFieldLabelText => const Color(0xFFE1E1E1);
+  @override
+  Color get formFieldSuffixIcon => const Color(0xFF9CA3AF);
+  @override
+  Color get formFieldSuccessBorder => const Color(0xFF10B981);
+  @override
+  Color get formFieldErrorBorder => const Color(0xFFEF4444);
 }

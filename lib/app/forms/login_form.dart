@@ -15,6 +15,7 @@ class LoginForm extends NyFormData {
         Field.email(
           "login.email",
           label: trans('login_page.email_placeholder'),
+          style: 'default',
           validate:
               FormValidator.rule("email", message: trans('errors.email_form')),
         ),
@@ -22,6 +23,7 @@ class LoginForm extends NyFormData {
           "login.password",
           viewable: true,
           label: trans('login_page.password_placeholder'),
+          style: 'default',
           validate:
               FormValidator.notEmpty(message: trans('errors.password_form')),
         ),
