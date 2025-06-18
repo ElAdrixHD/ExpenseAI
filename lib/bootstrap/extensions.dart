@@ -30,6 +30,7 @@ extension NyTextStyle on TextStyle {
   }
 }
 
+/// [Exception] Extensions
 extension MyException on Exception {
   String get message {
     return toString().replaceFirst('Exception: ', '');

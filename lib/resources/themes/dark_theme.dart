@@ -17,7 +17,7 @@ ThemeData darkTheme(ColorStyles color) {
   return ThemeData(
     useMaterial3: true,
     primaryColor: color.content,
-    primaryColorDark: color.content,
+    primaryColorDark: Colors.black,
     focusColor: color.content,
     scaffoldBackgroundColor: color.background,
     brightness: Brightness.dark,
