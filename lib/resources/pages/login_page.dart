@@ -119,11 +119,41 @@ class _LoginPageState extends NyPage<LoginPage> {
                               description: trans(
                                   'login_page.toast_success_forgot_password_description'),
                             );
-                          } catch (e) {
-                            showToastWarning(
-                              title: trans('login_page.toast_warning_title'),
-                              description:
-                                  trans('login_page.toast_warning_description'),
+                            
+                            // Track successful forgot password
+                            await AnalyticsService.trackEvent(
+                              name: 'forgot_password_success',
+                              parameters: {
+                                'screen': 'login_page',
+                                'timestamp': DateTime.now().millisecondsSinceEpoch,
+                              },
+                            );
+                          } on ForgotPasswordException catch (e) {
+                            if (e.isWarning) {
+                              showToastWarning(
+                                title: trans('login_page.toast_warning_title'),
+                                description: e.message,
+                              );
+                            } else {
+                              showToastDanger(
+                                title: trans('errors.toast_title'),
+                                description: e.message,
+                              );
+                            }
+                          } on Exception catch (e) {
+                            showToastDanger(
+                              title: trans('errors.toast_title'),
+                              description: e.message,
+                            );
+                            
+                            // Track failed forgot password
+                            await AnalyticsService.trackEvent(
+                              name: 'forgot_password_failed',
+                              parameters: {
+                                'screen': 'login_page',
+                                'error': e.message,
+                                'timestamp': DateTime.now().millisecondsSinceEpoch,
+                              },
                             );
                           }
                         },
