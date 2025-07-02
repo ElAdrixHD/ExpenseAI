@@ -16,15 +16,29 @@ class RegisterForm extends NyFormData {
           "register.email",
           style: 'default',
           label: trans('register_page.email_placeholder'),
-          validate: FormValidator.email(message: trans('errors.email_form')),
+          validate: FormValidator.custom(
+            (value) {
+              if (value == null || value.isEmpty) return false;
+              // More strict email validation
+              final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+              return emailRegex.hasMatch(value.trim());
+            },
+            message: trans('errors.email_form'),
+          ),
         ),
         Field.password(
           "register.password",
           viewable: true,
           style: 'default',
           label: trans('register_page.password_placeholder'),
-          validate: FormValidator.notEmpty(
-            message: trans('errors.password_required'),
+          validate: FormValidator.custom(
+            (value) {
+              if (value == null || value.isEmpty) return false;
+              if (value.length < 8) return false;
+              // Require uppercase, lowercase, number and special character
+              return RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]').hasMatch(value);
+            },
+            message: 'Password must be 8+ characters with uppercase, lowercase, number and special character',
           ),
         ),
         Field.password(

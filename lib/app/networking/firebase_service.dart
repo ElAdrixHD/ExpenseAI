@@ -5,6 +5,9 @@ import '/app/models/user.dart';
 
 class FirebaseAuthService {
   static final auth.FirebaseAuth _auth = auth.FirebaseAuth.instance;
+  static final Map<String, DateTime> _lastAttempts = {};
+  static const Duration _rateLimitDuration = Duration(seconds: 30);
+  static const int _maxAttempts = 5;
 
   static User? get currentUser => User(
         id: _auth.currentUser?.uid,
@@ -18,23 +21,28 @@ class FirebaseAuthService {
     required String email,
     required String password,
   }) async {
+    _checkRateLimit(email);
+    
     try {
       auth.UserCredential userCredential =
           await _auth.signInWithEmailAndPassword(
-        email: email,
+        email: email.trim().toLowerCase(),
         password: password,
       );
 
+      _clearFailedAttempts(email);
       return User(
         id: userCredential.user?.uid,
         name: userCredential.user?.displayName,
         email: userCredential.user?.email,
       );
     } on auth.FirebaseAuthException catch (e) {
+      _recordFailedAttempt(email);
       String errorMessage = _getErrorMessage(e.code);
       throw Exception(errorMessage);
     } catch (e) {
-      throw Exception('An unexpected error occurred: ${e.toString()}');
+      _recordFailedAttempt(email);
+      throw Exception('Authentication failed. Please try again.');
     }
   }
 
@@ -42,23 +50,28 @@ class FirebaseAuthService {
     required String email,
     required String password,
   }) async {
+    _checkRateLimit(email);
+    
     try {
       auth.UserCredential userCredential =
           await _auth.createUserWithEmailAndPassword(
-        email: email,
+        email: email.trim().toLowerCase(),
         password: password,
       );
 
+      _clearFailedAttempts(email);
       return User(
         id: userCredential.user?.uid,
         email: userCredential.user?.email,
         name: userCredential.user?.displayName,
       );
     } on auth.FirebaseAuthException catch (e) {
+      _recordFailedAttempt(email);
       String errorMessage = _getErrorMessage(e.code);
       throw Exception(errorMessage);
     } catch (e) {
-      throw Exception('An unexpected error occurred: ${e.toString()}');
+      _recordFailedAttempt(email);
+      throw Exception('Registration failed. Please try again.');
     }
   }
 
@@ -80,6 +93,26 @@ class FirebaseAuthService {
     } catch (e) {
       throw Exception('An unexpected error occurred: ${e.toString()}');
     }
+  }
+
+  static void _checkRateLimit(String email) {
+    final key = email.toLowerCase();
+    final lastAttempt = _lastAttempts[key];
+    
+    if (lastAttempt != null && 
+        DateTime.now().difference(lastAttempt) < _rateLimitDuration) {
+      throw Exception('Too many attempts. Please wait before trying again.');
+    }
+  }
+  
+  static void _recordFailedAttempt(String email) {
+    final key = email.toLowerCase();
+    _lastAttempts[key] = DateTime.now();
+  }
+  
+  static void _clearFailedAttempts(String email) {
+    final key = email.toLowerCase();
+    _lastAttempts.remove(key);
   }
 
   static String _getErrorMessage(String errorCode) {
