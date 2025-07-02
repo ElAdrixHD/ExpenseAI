@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCXjJVaKxC6SfX0UK7LKN0_UrGAMTG_TTA',
-    appId: '1:634440153808:android:ed55790700680f31a9fcd5',
-    messagingSenderId: '634440153808',
-    projectId: 'expensai-fefa3',
-    storageBucket: 'expensai-fefa3.firebasestorage.app',
+    apiKey: 'YOUR_ANDROID_API_KEY',
+    appId: 'YOUR_ANDROID_APP_ID',
+    messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
+    projectId: 'YOUR_PROJECT_ID',
+    storageBucket: 'YOUR_PROJECT_ID.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDmSE1qK8P25oWE6b1gw2C-fbnjKCbHNUQ',
-    appId: '1:634440153808:ios:696018ead95c6a5ba9fcd5',
-    messagingSenderId: '634440153808',
-    projectId: 'expensai-fefa3',
-    storageBucket: 'expensai-fefa3.firebasestorage.app',
-    iosBundleId: 'es.adrianmmudarra.expense-agent',
+    apiKey: 'YOUR_IOS_API_KEY',
+    appId: 'YOUR_IOS_APP_ID',
+    messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
+    projectId: 'YOUR_PROJECT_ID',
+    storageBucket: 'YOUR_PROJECT_ID.firebasestorage.app',
+    iosBundleId: 'YOUR_IOS_BUNDLE_ID',
   );
 }

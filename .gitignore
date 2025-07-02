@@ -45,4 +45,9 @@ app.*.map.json
 # FVM Version Cache
 .fvm/
 
+# Firebase Configuration Files (contain API keys and sensitive data)
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+lib/firebase_options.dart
+
 CLAUDE.md
