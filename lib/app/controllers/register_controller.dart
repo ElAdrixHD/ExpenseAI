@@ -5,7 +5,7 @@ import '/app/events/register_event.dart';
 import '/app/networking/analytics_service.dart';
 
 class RegisterController extends Controller {
-  handleRegister(Map<String, dynamic> data) async {
+  Future handleRegister(Map<String, dynamic> data) async {
     // Sanitize and validate inputs
     String email = _sanitizeEmail(data['register.email'] ?? '');
     String password = data['register.password'] ?? '';

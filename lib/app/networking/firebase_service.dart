@@ -86,12 +86,12 @@ class FirebaseAuthService {
 
   static Future<void> resetPassword({required String email}) async {
     try {
-      await _auth.sendPasswordResetEmail(email: email);
+      await _auth.sendPasswordResetEmail(email: email.trim().toLowerCase());
     } on auth.FirebaseAuthException catch (e) {
-      String errorMessage = _getErrorMessage(e.code);
+      String errorMessage = _getPasswordResetErrorMessage(e.code);
       throw Exception(errorMessage);
     } catch (e) {
-      throw Exception('An unexpected error occurred: ${e.toString()}');
+      throw Exception(trans('errors.firebase_auth.password_reset_generic'));
     }
   }
 
@@ -137,6 +137,21 @@ class FirebaseAuthService {
         return trans('errors.firebase_auth.invalid-credential');
       default:
         return trans('errors.firebase_auth.default');
+    }
+  }
+
+  static String _getPasswordResetErrorMessage(String errorCode) {
+    switch (errorCode) {
+      case 'user-not-found':
+        return trans('errors.firebase_auth.password_reset_user_not_found');
+      case 'invalid-email':
+        return trans('errors.firebase_auth.password_reset_invalid_email');
+      case 'too-many-requests':
+        return trans('errors.firebase_auth.password_reset_too_many_requests');
+      case 'user-disabled':
+        return trans('errors.firebase_auth.password_reset_user_disabled');
+      default:
+        return trans('errors.firebase_auth.password_reset_default');
     }
   }
 }

@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
-import '/resources/widgets/splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:nylo_framework/nylo_framework.dart';
+
 import '/bootstrap/app.dart';
 import '/config/providers.dart';
-import 'package:nylo_framework/nylo_framework.dart';
+import '/resources/widgets/splash_screen.dart';
 
 /* Boot
 |--------------------------------------------------------------------------
@@ -39,13 +40,13 @@ class Boot {
 | It's run before your app providers are booted.
 |-------------------------------------------------------------------------- */
 
-_setup() async {
+Future _setup() async {
   /// Initialize Firebase
   await Firebase.initializeApp();
-  
+
   /// Initialize Firebase Analytics
   FirebaseAnalytics.instance;
-  
+
   /// Example: Initializing StorageConfig
   // StorageConfig.init(
   //   androidOptions: AndroidOptions(

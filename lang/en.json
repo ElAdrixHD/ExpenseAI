@@ -19,7 +19,13 @@
       "too_many_requests": "Too many attempts. Please try again later.",
       "operation_not_allowed": "This operation is not allowed.",
       "invalid-credential": "Incorrect username or password.",
-      "default": "An authentication error occurred. Please try again."
+      "default": "An authentication error occurred. Please try again.",
+      "password_reset_user_not_found": "No account found with this email address. Please check your email or create a new account.",
+      "password_reset_invalid_email": "Please enter a valid email address.",
+      "password_reset_too_many_requests": "Too many password reset requests. Please try again later.",
+      "password_reset_user_disabled": "This account has been disabled. Please contact support.",
+      "password_reset_default": "Unable to send password reset email. Please try again.",
+      "password_reset_generic": "An unexpected error occurred while resetting your password."
     }
   },
   "login_page": {

@@ -11,7 +11,7 @@ import 'package:nylo_framework/nylo_framework.dart';
 
 class Keys {
   // Define the keys you want to be synced on boot
-  static syncedOnBoot() => () async {
+  static Future<List<StorageKey>> Function() syncedOnBoot() => () async {
         return [
           auth,
           bearerToken,

@@ -4,6 +4,11 @@
     "toast_title": "¡Algo salió mal!",
     "email_form": "Introduce un correo válido",
     "password_form": "Introduce una contraseña válida",
+    "password_required": "La contraseña es requerida",
+    "confirm_password_form": "Por favor confirma tu contraseña",
+    "password_min_length": "La contraseña debe tener al menos 8 caracteres",
+    "password_weak": "La contraseña debe contener mayúsculas, minúsculas y números",
+    "passwords_do_not_match": "Las contraseñas no coinciden",
     "firebase_auth": {
       "not_found": "No se encontró ningún usuario con esta dirección de correo electrónico.",
       "wrong_password": "Contraseña incorrecta proporcionada.",
@@ -14,7 +19,13 @@
       "too_many_requests": "Demasiados intentos. Por favor, inténtalo de nuevo más tarde.",
       "operation_not_allowed": "Esta operación no está permitida.",
       "invalid-credential": "Nombre de usuario o contraseña incorrectos.",
-      "default": "Ocurrió un error de autenticación. Por favor, inténtalo de nuevo."
+      "default": "Ocurrió un error de autenticación. Por favor, inténtalo de nuevo.",
+      "password_reset_user_not_found": "No se encontró ninguna cuenta con esta dirección de correo electrónico. Por favor, verifica tu correo o crea una nueva cuenta.",
+      "password_reset_invalid_email": "Por favor, introduce una dirección de correo electrónico válida.",
+      "password_reset_too_many_requests": "Demasiadas solicitudes de restablecimiento de contraseña. Por favor, inténtalo de nuevo más tarde.",
+      "password_reset_user_disabled": "Esta cuenta ha sido deshabilitada. Por favor, contacta al soporte.",
+      "password_reset_default": "No se pudo enviar el correo de restablecimiento de contraseña. Por favor, inténtalo de nuevo.",
+      "password_reset_generic": "Ocurrió un error inesperado al restablecer tu contraseña."
     }
   },
   "login_page": {
@@ -31,5 +42,14 @@
     "email_required": "El correo electrónico es requerido.",
     "toast_success_forgot_password_title": "Restablecimiento de Contraseña",
     "toast_success_forgot_password_description": "Correo de restablecimiento de contraseña enviado. Revisa tu bandeja de entrada."
+  },
+  "register_page": {
+    "welcome_message": "Crea tu Cuenta",
+    "email_placeholder": "Correo electrónico",
+    "password_placeholder": "Contraseña",
+    "confirm_password_placeholder": "Confirmar Contraseña",
+    "register_button_text": "Crear Cuenta",
+    "login_text": "¿Ya tienes una cuenta? ",
+    "login_button_text": "Iniciar Sesión"
   }
 }

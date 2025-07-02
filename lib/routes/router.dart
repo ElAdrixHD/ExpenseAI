@@ -1,9 +1,9 @@
-import '/resources/pages/register_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
 import '/resources/pages/home_page.dart';
 import '/resources/pages/login_page.dart';
 import '/resources/pages/not_found_page.dart';
+import '/resources/pages/register_page.dart';
 
 /* App Router
 |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ import '/resources/pages/not_found_page.dart';
 | Learn more https://nylo.dev/docs/6.x/router
 |-------------------------------------------------------------------------- */
 
-appRouter() => nyRoutes((router) {
+NyRouter appRouter() => nyRoutes((router) {
       router.add(LoginPage.path).initialRoute();
       router.add(RegisterPage.path);
       router.add(HomePage.path).authenticatedRoute();
@@ -37,4 +37,4 @@ appRouter() => nyRoutes((router) {
       //
       // });
       router.add(NotFoundPage.path).unknownRoute();
-});
+    });
